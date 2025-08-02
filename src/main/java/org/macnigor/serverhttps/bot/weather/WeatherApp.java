@@ -51,13 +51,17 @@ public class WeatherApp {
             WeatherNowResponse weather = objectMapper.readValue(response, WeatherNowResponse.class);
 
             return String.format(
-                    "Сейчас в городе: %s\nТемпература: %.1f°C\nОщущается как: %.1f°C\nОписание: %s\nВлажность: %d%%\nСкорость ветра: %.1f м/с",
+                    "Сейчас в городе: %s\nТемпература: %.1f°C\nОщущается как: %.1f°C\nОписание: %s\nВлажность: %d%%\nСкорость ветра: %.1f м/с\n\n" +
+                            "Сегодня ожидаестся: %s\n\n" +
+                            "На ближайшие пять дней: %s",
                     city,
                     weather.getMain().getTemp(),
                     weather.getMain().getFeels_like(),
                     weather.getWeather().get(0).getDescription(),
                     weather.getMain().getHumidity(),
-                    weather.getWind().getSpeed()
+                    weather.getWind().getSpeed(),
+                    getWeatherToday(),
+                    getWeatherTomorrowAndNextFiveDays()
             );
 
         } catch (Exception e) {
