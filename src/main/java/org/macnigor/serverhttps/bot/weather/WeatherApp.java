@@ -187,7 +187,7 @@ public class WeatherApp {
     public String getFiveDayForecast() {
         String city = getChoiceCity();
         try {
-            String urlString = "http://api.openweathermap.org/data/2.5/forecast?lat=51.6720&lon=39.1843&appid=d6b80485c7ebcf208033a7ed332cb4af";
+            String urlString = "http://api.openweathermap.org/data/2.5/forecast?lat=51.6720&lon=39.1843&appid=d6b80485c7ebcf208033a7ed332cb4af&units=metric&lang=RU";
             return fetchResponse(urlString);
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при получении данных о прогнозе погоды на 5 дней.", e);
