@@ -44,16 +44,16 @@ public class WeatherApp {
     private final Map<String, String> choiceCity = new HashMap<>();
 
     public String getWeatherNow() {
-        String city = getChoiceCity();
+        String city ="Воронеж";
         try {
-            String urlString = BASE_URL + "?q=" + city + "&appid=" + API_KEY + "&units=metric&lang=ru";
+            String urlString = BASE_URL;
             String response = fetchResponse(urlString);
             WeatherNowResponse weather = objectMapper.readValue(response, WeatherNowResponse.class);
 
             return String.format(
                     "Сейчас в городе: %s\n\nТемпература: %.1f°C\nОщущается как: %.1f°C\nОписание: %s\nВлажность: %d%%\nСкорость ветра: %.1f м/с\n\n" +
-                            "Сегодня ожидается:\n\n %s" +
-                            "На ближайшие пять дней:\n\n %s",
+                            "Сегодня ожидается:\n\n %s\n\n" +
+                            "На ближайшие дни:\n\n%s",
                     city,
                     weather.getMain().getTemp(),
                     weather.getMain().getFeels_like(),
@@ -124,15 +124,14 @@ public class WeatherApp {
     }
 
     public String getWeatherTomorrowAndNextFiveDays() {
-        String city = getChoiceCity();
         String jsonResponse = getFiveDayForecast();
-        StringBuilder resultBuilder = new StringBuilder(city).append("\n");
+        StringBuilder resultBuilder = new StringBuilder();
 
         try {
             JsonNode listNode = objectMapper.readTree(jsonResponse).path("list");
             LocalDateTime now = LocalDateTime.now();
 
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <= 4; i++) {
                 double tempMax = Double.NEGATIVE_INFINITY;
                 double tempMin = Double.POSITIVE_INFINITY;
 
@@ -173,8 +172,8 @@ public class WeatherApp {
                     description = resolveDominantDescription(clear, cloudy, overcast, partlyCloudy, description);
                 }
 
-                resultBuilder.append(String.format("%s %s %.1f°C макс./ %.1f°C мин.\n",
-                        convertDateForDisplay(date), getEmoji(description), tempMax, tempMin));
+                resultBuilder.append(String.format("%s %s %s %.1f°C макс./ %.1f°C мин.\n",
+                        convertDateForDisplay(date), getEmoji(description),description, tempMax, tempMin));
             }
 
             return resultBuilder.toString();
@@ -185,10 +184,10 @@ public class WeatherApp {
     }
 
     public String getFiveDayForecast() {
-        String city = getChoiceCity();
+
         try {
-            String urlString = "http://api.openweathermap.org/data/2.5/forecast?lat=51.6720&lon=39.1843&appid=d6b80485c7ebcf208033a7ed332cb4af&units=metric&lang=RU";
-            return fetchResponse(urlString);
+
+            return fetchResponse(FORECAST_URL);
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при получении данных о прогнозе погоды на 5 дней.", e);
         }
@@ -233,12 +232,4 @@ public class WeatherApp {
         return LocalDateTime.ofInstant(Instant.ofEpochSecond(timestamp), ZoneId.systemDefault());
     }
 
-    public String getChoiceCity() {
-        return choiceCity.getOrDefault("Choice", "Voronezh");
-    }
-
-    public void setChoiceCity(String city) {
-        choiceCity.clear();
-        choiceCity.put("Choice", city);
-    }
 }
