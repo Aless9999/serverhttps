@@ -31,6 +31,14 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
+        String path = request.getRequestURI();
+
+        // Пропускаем авторегистрацию и другие публичные пути
+        if (path.equals("/api/auth/register") ) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String header = request.getHeader(HEADER_NAME);
 
         if (header == null || !header.startsWith("Bearer ")) {
@@ -61,5 +69,6 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 
 }

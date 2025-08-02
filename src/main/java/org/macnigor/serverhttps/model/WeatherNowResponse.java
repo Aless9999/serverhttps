@@ -1,38 +1,44 @@
 package org.macnigor.serverhttps.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
-@Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
+@Setter
 public class WeatherNowResponse {
     private Main main;
     private Wind wind;
     private List<Weather> weather;
 
-    // вложенные классы
+    @JsonIgnoreProperties(ignoreUnknown = true)
     @Getter
+    @Setter
     public static class Main {
         private double temp;
         private double feels_like;
         private int humidity;
-        // геттеры/сеттеры
+        // можно добавить другие поля, если нужно
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     @Getter
+    @Setter
     public static class Wind {
         private double speed;
-        // геттеры/сеттеры
+        private int deg;  // Можно добавить поле градуса ветра, если понадобится
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     @Getter
+    @Setter
     public static class Weather {
+        private int id;            // добавлено
+        private String main;       // добавлено
         private String description;
-        // геттеры/сеттеры
+        private String icon;       // добавлено
     }
-
-    // геттеры/сеттеры
 }
-

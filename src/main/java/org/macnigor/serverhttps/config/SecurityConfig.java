@@ -1,6 +1,7 @@
-package org.macnigor.serverhttps.security;
+package org.macnigor.serverhttps.config;
 
 import org.macnigor.serverhttps.repository.UserRepository;
+import org.macnigor.serverhttps.security.ApiKeyAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.SecurityFilterChain;
@@ -14,6 +15,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http,UserRepository userRepository) throws Exception {
         http.csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/register").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 )

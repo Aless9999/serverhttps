@@ -3,14 +3,14 @@ package org.macnigor.serverhttps.service;
 import org.macnigor.serverhttps.bot.weather.WeatherApp;
 import org.macnigor.serverhttps.model.User;
 import org.macnigor.serverhttps.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class UserService {
 
     private final UserRepository userRepository;

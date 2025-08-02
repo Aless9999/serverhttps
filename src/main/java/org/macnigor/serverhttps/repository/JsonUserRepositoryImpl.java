@@ -3,18 +3,21 @@ package org.macnigor.serverhttps.repository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.macnigor.serverhttps.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+@Repository
 public class JsonUserRepositoryImpl implements UserRepository {
 
     private final File storageFile = new File("users.json");
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
     private final List<User> users;
 
-    public JsonUserRepositoryImpl() {
+    public JsonUserRepositoryImpl(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
         this.users = loadUsers();
     }
 
