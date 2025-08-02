@@ -46,7 +46,7 @@ public class JsonUserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findByApiKey(String apiKey) {
-        return users.stream().filter(u -> u.getApiKey().equals(apiKey)).findFirst();
+        return users.stream().filter(u -> Objects.equals(u.getApiKey(), apiKey)).findFirst();
     }
 
     @Override

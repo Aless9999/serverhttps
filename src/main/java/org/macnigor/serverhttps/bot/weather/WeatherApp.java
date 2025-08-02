@@ -51,9 +51,9 @@ public class WeatherApp {
             WeatherNowResponse weather = objectMapper.readValue(response, WeatherNowResponse.class);
 
             return String.format(
-                    "Сейчас в городе: %s\nТемпература: %.1f°C\nОщущается как: %.1f°C\nОписание: %s\nВлажность: %d%%\nСкорость ветра: %.1f м/с\n\n" +
-                            "Сегодня ожидаестся: %s\n\n" +
-                            "На ближайшие пять дней: %s",
+                    "Сейчас в городе: %s\n\nТемпература: %.1f°C\nОщущается как: %.1f°C\nОписание: %s\nВлажность: %d%%\nСкорость ветра: %.1f м/с\n\n" +
+                            "Сегодня ожидается:\n\n %s" +
+                            "На ближайшие пять дней:\n\n %s",
                     city,
                     weather.getMain().getTemp(),
                     weather.getMain().getFeels_like(),
@@ -187,7 +187,7 @@ public class WeatherApp {
     public String getFiveDayForecast() {
         String city = getChoiceCity();
         try {
-            String urlString = FORECAST_URL + "?q=" + city + "&appid=" + API_KEY + "&lang=ru&units=metric";
+            String urlString = "http://api.openweathermap.org/data/2.5/forecast?lat=51.6720&lon=39.1843&appid=d6b80485c7ebcf208033a7ed332cb4af";
             return fetchResponse(urlString);
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при получении данных о прогнозе погоды на 5 дней.", e);
