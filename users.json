@@ -1,0 +1,67 @@
+[ {
+  "username" : "test1234",
+  "passwordHash" : "$2a$10$ftOzY6UOV8IIaOcy7howQOqWECEihWXJIMLFCM28nX1Djo0ALv2q2",
+  "role" : "user",
+  "createdAt" : "2025-08-02T14:12:59.356611400Z",
+  "apiKey" : "edf00101-2a46-402c-bef4-8e92ca8c2e73"
+}, {
+  "username" : "test12345",
+  "passwordHash" : "$2a$10$c6wzKy4j.JE28FikxKDzlOwItG1DaP.96xptZh3JAhBZr5XyU3t.S",
+  "role" : "user",
+  "createdAt" : "2025-08-02T14:13:29.927188700Z",
+  "apiKey" : "098f183f-d538-4f07-a4df-7356477525ed"
+}, {
+  "username" : "test123456",
+  "passwordHash" : "$2a$10$8p/qIa1QyKIbeEQg5k81SeiaL7j4kCiPAcz7FxZsZjHBzRM70EZPe",
+  "role" : "user",
+  "createdAt" : "2025-08-02T14:15:04.258212700Z",
+  "apiKey" : "b4189929-b1aa-40ac-806e-06818a248791"
+}, {
+  "username" : "test12345655",
+  "passwordHash" : "$2a$10$NipgsVFt7FFTfDe8U1v73uZRpYRpWSDjvh8.vY3zN2bAonh9j5R4S",
+  "role" : "user",
+  "createdAt" : "2025-08-02T17:34:30.624382700Z",
+  "apiKey" : "e53c0092-3c5c-4053-8a5e-83f5ab5a8ad1"
+}, {
+  "username" : "test12345655444",
+  "passwordHash" : "$2a$10$tCOVVMuiJVhQUybVuIRoie4tqeK.hD6TDHkMTwKyeTXzALsjJcEuC",
+  "role" : "user",
+  "createdAt" : "2025-08-02T19:41:23.685006200Z",
+  "apiKey" : "00be9416-e151-4546-88b9-0e1e6b208b30"
+}, {
+  "username" : "test1234565544456",
+  "passwordHash" : "$2a$10$3MPhY7tW7meKdItXX6KjBO4qqyD7lbQqY.SaZjEoJL5qcgZHJG0QO",
+  "role" : "user",
+  "createdAt" : "2025-08-02T20:37:41.389817100Z",
+  "apiKey" : "2cf7177a-13f6-4b61-9e9a-091ab866af9c"
+}, {
+  "username" : "test123456554445645",
+  "passwordHash" : "$2a$10$YkC/2HOBCY8u3gg17RNEiOLj5MCSy2UFz4WSBVjj5APaJniWp.nKW",
+  "role" : "user",
+  "createdAt" : "2025-08-02T20:44:55.264569300Z",
+  "apiKey" : "f5b801ec-ca7c-467e-94d9-58d78176c58f"
+}, {
+  "username" : "test",
+  "passwordHash" : "$2a$10$iKMiN2IGJ4gEsAkr/6YBmemKJ4lDTvo78FmypE1Gl4Z3UHfeIZ5ou",
+  "role" : "user",
+  "createdAt" : "2025-08-02T21:02:23.657134300Z",
+  "apiKey" : "cf7a054a-f5f3-48e0-9177-13221ad59931"
+}, {
+  "username" : "device",
+  "passwordHash" : "$2a$10$DFNUM25jAbZxlMM07yMyP.lTaKd1Zzmkpsxx.XdYpG7ajC97NQmLK",
+  "role" : "user",
+  "createdAt" : "2026-01-03T00:14:06.432309830Z",
+  "apiKey" : "6076a692-9502-4434-a5b3-8a57ff7cd2fa"
+}, {
+  "username" : "device1",
+  "passwordHash" : "$2a$10$3MJLNJFjaxK6kUj.9sHuUePvG1LcImPYBDVLLIPuSiXk8dEeJPK0u",
+  "role" : "user",
+  "createdAt" : "2026-01-03T00:14:40.437951599Z",
+  "apiKey" : "38c98761-8221-4c72-b3c6-6e6a541ae78c"
+}, {
+  "username" : "device12",
+  "passwordHash" : "$2a$10$lsF95WqwUqVTkNvXCkfjxuBUWtUHGPQKQze2vC2o1yfQBVerqygW.",
+  "role" : "ROLE_API_USER",
+  "createdAt" : "2026-01-03T07:25:35.691393514Z",
+  "apiKey" : "6183bdbb-7197-4501-b9d2-ae07ed60cdc7"
+} ]
