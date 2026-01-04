@@ -41,11 +41,6 @@ public class UserService {
         return Optional.of(user);
     }
 
-    public Optional<User> login(String username, String rawPassword) {
-        return userRepository.findByUsername(username)
-                .filter(user -> passwordEncoder.matches(rawPassword, user.getPasswordHash()));
-    }
-
 
     public String getWeatherNow() {
 
