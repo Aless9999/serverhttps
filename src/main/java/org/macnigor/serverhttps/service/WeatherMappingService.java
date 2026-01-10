@@ -12,8 +12,11 @@ import java.util.stream.Collectors;
 
 @Component
 public class WeatherMappingService {
+
+
     private final WeatherProcessor processor;
     private final org.macnigor.serverhttps.util.WeatherFormatter formatter;
+
     public WeatherMappingService(WeatherProcessor processor, org.macnigor.serverhttps.util.WeatherFormatter formatter) {
         this.processor = processor;
         this.formatter = formatter;
@@ -25,7 +28,8 @@ public class WeatherMappingService {
                 current.main().temp(),
                 current.main().feelsLike(),
                 current.weather().getFirst().description(),
-                formatter.getEmoji(current.weather().getFirst().description())
+                formatter.getEmoji(current.weather().getFirst().description()),
+                current.wind()
         );
 
         var daysMap = processor.groupByDay(forecast);

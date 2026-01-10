@@ -10,7 +10,9 @@ public record WeatherProcessedResponse(
             double temp,
             double feelsLike,
             String description,
-            String emoji
+            String emoji,
+            ResponseCurrentFromWeatherServer.Wind wind
+
     ) {}
 
     public record DailyForecastSummary(

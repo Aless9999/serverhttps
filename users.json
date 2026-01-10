@@ -64,4 +64,16 @@
   "role" : "ROLE_API_USER",
   "createdAt" : "2026-01-03T07:25:35.691393514Z",
   "apiKey" : "6183bdbb-7197-4501-b9d2-ae07ed60cdc7"
+}, {
+  "username" : "boss",
+  "passwordHash" : "$2a$10$rXcp9otsGTMTSXNfkj20JeHfB576M3dFSMXP7ZPXTo9fguGyWLnMa",
+  "role" : "user",
+  "createdAt" : "2026-01-10T06:05:07.741862814Z",
+  "apiKey" : "5c7de080-003b-47a0-b067-4186cbec6256"
+}, {
+  "username" : "boss1",
+  "passwordHash" : "$2a$10$HGTWklq0DQIzNPlCUL393.VkRLs/kEPGWSzoIGtV1jE8tkOSagdBq",
+  "role" : "user",
+  "createdAt" : "2026-01-10T06:12:40.195953966Z",
+  "apiKey" : "c98bcf9e-89f2-449a-97ac-c22c7991ee5f"
 } ]
