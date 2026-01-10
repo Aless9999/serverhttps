@@ -1,10 +1,12 @@
 package org.macnigor.serverhttps.model;
 
 
-
+import jakarta.validation.constraints.NotNull;
 
 public class RegisterRequest {
+    @NotNull
     private String username;
+    @NotNull
     private String password;
 
     public String getUsername() {
