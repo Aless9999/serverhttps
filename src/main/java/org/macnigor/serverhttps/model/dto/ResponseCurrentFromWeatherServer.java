@@ -7,7 +7,7 @@ import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import java.util.List;
 
 
-@RegisterReflectionForBinding({
+@RegisterReflectionForBinding(classes = {
         ResponseCurrentFromWeatherServer.class,
         ResponseCurrentFromWeatherServer.Weather.class,
         ResponseCurrentFromWeatherServer.Main.class,
@@ -15,30 +15,30 @@ import java.util.List;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record ResponseCurrentFromWeatherServer(
-        List<Weather> weather,
-        Main main,
-        Wind wind,
-        long dt,
-        String name
+        @JsonProperty("weather") List<Weather> weather,
+        @JsonProperty("main") Main main,
+        @JsonProperty("wind") Wind wind,
+        @JsonProperty("dt") long dt,
+        @JsonProperty("name") String name
 ) {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Weather(
-            String description,
-            String icon
+            @JsonProperty("description") String description,
+            @JsonProperty("icon") String icon
     ) {}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Main(
-            double temp,
+            @JsonProperty("temp") double temp,
             @JsonProperty("feels_like") double feelsLike,
             @JsonProperty("temp_min") double tempMin,
             @JsonProperty("temp_max") double tempMax,
-            int humidity
+            @JsonProperty("humidity") int humidity
     ) {}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Wind(
-            double speed,
-            int deg
+            @JsonProperty("speed") double speed,
+            @JsonProperty("deg") int deg
     ) {}
 }

@@ -7,7 +7,7 @@ import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import java.util.List;
 
 
-@RegisterReflectionForBinding({
+@RegisterReflectionForBinding(classes = {
         ResponseForecastFromWeatherServer.class,
         ResponseForecastFromWeatherServer.ForecastItem.class,
         ResponseForecastFromWeatherServer.Main.class,
@@ -17,15 +17,15 @@ import java.util.List;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record ResponseForecastFromWeatherServer(
-        List<ForecastItem> list,
-        City city
+        @JsonProperty("list") List<ForecastItem> list,
+        @JsonProperty("city") City city
 ) {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record ForecastItem(
-            long dt,
-            Main main,
-            List<Weather> weather,
-            Wind wind
+            @JsonProperty("dt") long dt,
+            @JsonProperty("main") Main main,
+            @JsonProperty("weather") List<Weather> weather,
+            @JsonProperty("wind") Wind wind
     ) {}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -34,23 +34,23 @@ public record ResponseForecastFromWeatherServer(
             @JsonProperty("feels_like") double feelsLike,
             @JsonProperty("temp_min") double tempMin,
             @JsonProperty("temp_max") double tempMax,
-            int humidity
+            @JsonProperty("humidity") int humidity
     ) {}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Weather(
-            String description,
-            String icon
+            @JsonProperty("description") String description,
+            @JsonProperty("icon") String icon
     ) {}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record Wind(
-            double speed,
-            int deg
+            @JsonProperty("speed") double speed,
+            @JsonProperty("deg") int deg
     ) {}
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record City(
-            String name
+            @JsonProperty("name") String name
     ) {}
 }

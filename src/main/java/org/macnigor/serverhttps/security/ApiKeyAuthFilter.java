@@ -61,8 +61,8 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
         User user = userOpt.get();
 
         var auth = new UsernamePasswordAuthenticationToken(
-                user.getUsername(),
-                user.getApiKey(),
+                user.username(),
+                user.apikey(),
                 List.of(() -> "ROLE_API_USER")
         );
         SecurityContextHolder.getContext().setAuthentication(auth);

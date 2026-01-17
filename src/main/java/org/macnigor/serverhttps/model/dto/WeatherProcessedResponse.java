@@ -1,11 +1,12 @@
 package org.macnigor.serverhttps.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 
 import java.util.List;
 
-@RegisterReflectionForBinding({
+@RegisterReflectionForBinding(classes = {
         WeatherProcessedResponse.class,
         WeatherProcessedResponse.CurrentWeatherSummary.class,
         WeatherProcessedResponse.DailyForecastSummary.class,
@@ -13,25 +14,25 @@ import java.util.List;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record WeatherProcessedResponse(
-        CurrentWeatherSummary now,
-        List<DailyForecastSummary> dailyForecast
+        @JsonProperty("now") CurrentWeatherSummary now,
+        @JsonProperty("dailyForecast") List<DailyForecastSummary> dailyForecast
 ) {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record CurrentWeatherSummary(
-            double temp,
-            double feelsLike,
-            String description,
-            String emoji,
-            ResponseCurrentFromWeatherServer.Wind wind
-
+            @JsonProperty("temp") double temp,
+            @JsonProperty("feelsLike") double feelsLike,
+            @JsonProperty("description") String description,
+            @JsonProperty("emoji") String emoji,
+            @JsonProperty("wind") org.macnigor.serverhttps.model.dto.ResponseCurrentFromWeatherServer.Wind wind
     ) {}
+
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record DailyForecastSummary(
-            String date,
-            double tempMax,
-            double tempMin,
-            String description,
-            String emoji,
-            String rainTime
+            @JsonProperty("date") String date,
+            @JsonProperty("tempMax") double tempMax,
+            @JsonProperty("tempMin") double tempMin,
+            @JsonProperty("description") String description,
+            @JsonProperty("emoji") String emoji,
+            @JsonProperty("rainTime") String rainTime
     ) {}
 }

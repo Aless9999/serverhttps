@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Service
 public class ResponseService {
+
     private final UserService userService;
 
     public ResponseService(UserService userService) {
@@ -19,23 +20,17 @@ public class ResponseService {
 
 
     public RegisterResponse responseAfterRegister(@Valid RegisterRequest request) {
-        RegisterResponse registerResponse = new RegisterResponse();
 
-        // Регистрация пользователя с возвращаемым Optional
-        Optional<User> user = userService.register(request.getUsername(), request.getPassword());
+        Optional<User> user = userService.register(request.username(), request.password());
 
-        // Если регистрация успешна
         if (user.isPresent()) {
-            User registeredUser = user.get();
-            registerResponse.setStatus("access");
-            registerResponse.setApiKey(registeredUser.getApiKey());
-            registerResponse.setMessage("You are registered");
-            return registerResponse;
+
+            return new RegisterResponse("access",
+                                        user.get().apikey(),
+                               "You are registered");
         } else {
-            // Если пользователь уже существует
-            registerResponse.setStatus("error");
-            registerResponse.setApiKey(null);
-            registerResponse.setMessage("User already exists");
-            return registerResponse;
+            return new RegisterResponse("error",
+                                   null,
+                                "User already exits");
         }
 }}

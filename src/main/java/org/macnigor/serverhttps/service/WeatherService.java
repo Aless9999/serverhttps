@@ -14,12 +14,12 @@ public class WeatherService {
         this.weatherClient = weatherClient;
     }
 
-    // Получаем текущую погоду (Raw DTO)
+
     public ResponseCurrentFromWeatherServer getCurrent() {
         return weatherClient.fetchCurrentWeatherJson();
     }
 
-    // Получаем прогноз (Raw DTO)
+
     public ResponseForecastFromWeatherServer getForecast() {
         return weatherClient.fetchForecastJson();
     }

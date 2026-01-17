@@ -1,30 +1,12 @@
 package org.macnigor.serverhttps.model;
 
 
-import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 
-public class RegisterRequest {
-    @NotNull
-    private String username;
-    @NotNull
-    private String password;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public RegisterRequest() {
-    }
+@RegisterReflectionForBinding(RegisterRequest.class)
+public record RegisterRequest(
+        @JsonProperty("username") String username,
+        @JsonProperty("password") String password
+) {
 }
