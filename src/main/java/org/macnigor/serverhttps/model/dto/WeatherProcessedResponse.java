@@ -1,5 +1,6 @@
 package org.macnigor.serverhttps.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
@@ -17,14 +18,22 @@ public record WeatherProcessedResponse(
         @JsonProperty("now") CurrentWeatherSummary now,
         @JsonProperty("dailyForecast") List<DailyForecastSummary> dailyForecast
 ) {
+
+    @JsonCreator
+    public WeatherProcessedResponse {}
+
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record CurrentWeatherSummary(
             @JsonProperty("temp") double temp,
             @JsonProperty("feelsLike") double feelsLike,
             @JsonProperty("description") String description,
             @JsonProperty("emoji") String emoji,
-            @JsonProperty("wind") org.macnigor.serverhttps.model.dto.ResponseCurrentFromWeatherServer.Wind wind
-    ) {}
+            @JsonProperty("wind")
+            org.macnigor.serverhttps.model.dto.ResponseCurrentFromWeatherServer.Wind wind
+    ) {
+        @JsonCreator
+        public CurrentWeatherSummary {}
+    }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public record DailyForecastSummary(
@@ -34,5 +43,8 @@ public record WeatherProcessedResponse(
             @JsonProperty("description") String description,
             @JsonProperty("emoji") String emoji,
             @JsonProperty("rainTime") String rainTime
-    ) {}
+    ) {
+        @JsonCreator
+        public DailyForecastSummary {}
+    }
 }
