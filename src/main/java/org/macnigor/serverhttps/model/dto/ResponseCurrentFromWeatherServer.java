@@ -3,13 +3,11 @@ package org.macnigor.serverhttps.model.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 
 import java.util.List;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RegisterReflectionForBinding
 public record ResponseCurrentFromWeatherServer(
         @JsonProperty("weather") List<Weather> weather,
         @JsonProperty("main") Main main,

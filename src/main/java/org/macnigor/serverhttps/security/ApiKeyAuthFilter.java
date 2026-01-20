@@ -33,8 +33,8 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // Пропускаем авторегистрацию и другие публичные пути
-        if (path.equals("/api/auth/register") ) {
+
+        if (path.matches(".*/auth/register/?$") ) {
             filterChain.doFilter(request, response);
             return;
         }

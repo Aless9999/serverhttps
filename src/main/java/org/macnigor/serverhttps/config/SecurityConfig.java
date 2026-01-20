@@ -11,17 +11,23 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @Configuration
 public class SecurityConfig {
 
-
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http,ApiKeyAuthFilter apiKeyAuthFilter) throws Exception {
-        http.csrf(csrf->csrf.disable())
-                .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+    public SecurityFilterChain filterChain(HttpSecurity http,
+                                           ApiKeyAuthFilter apiKeyAuthFilter) throws Exception {
+
+        http.csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register").permitAll()
-                        .requestMatchers("/api/weather").authenticated()
-                        .anyRequest().permitAll()
+                        .requestMatchers(
+                                "/api/auth/register",
+                                "/api/v1/auth/register"
+                        ).permitAll()
+                        .anyRequest().authenticated()
                 )
-                .addFilterBefore(apiKeyAuthFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(
+                        apiKeyAuthFilter,
+                        org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class
+                );
 
         return http.build();
     }
